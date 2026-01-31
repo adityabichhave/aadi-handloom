@@ -121,7 +121,7 @@ export default function AboutHeritage() {
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 sm:gap-12">
               <Image
-                src="/logo.png"
+                src="/aadi-handloom-logo.png"
                 alt="Aadi Handloom Logo"
                 width={120}
                 height={60}
