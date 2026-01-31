@@ -155,7 +155,7 @@ This project demonstrates:
 ## 👨‍💻 Author
 
 Aditya Kumar Bichhave
-B.Tech Computer Science (Game & Software Development Track)
+B.Tech Computer Science 
 Frontend + UI Systems + Interactive Web Engineering
 
 ---
