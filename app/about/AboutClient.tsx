@@ -116,11 +116,11 @@ export default function AboutClient() {
             {["certificate-1.png","certificate-2.png","award-1.png","award-2.png"].map((img, i) => (
               <button
                 key={i}
-                onClick={() => setActiveImage(`/trust/${img}`)}
+                onClick={() => setActiveImage(`/Trust/${img}`)}
                 className="group relative w-full aspect-[3/4] border border-[#d6b874]/40 bg-[#1e140c] overflow-hidden"
               >
                 <Image
-                  src={`/trust/${img}`}
+                  src={`/Trust/${img}`}
                   alt="Handloom certificate or award recognition"
                   fill
                   className="object-contain p-4 transition-transform duration-500 group-hover:scale-110"
