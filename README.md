@@ -65,6 +65,7 @@ Clone the repository:
 ```bash
 git clone https://github.com/YOUR-USERNAME/aadi-handloom.git
 cd aadi-handloom
+<<<<<<< HEAD
 ````
 
 Install dependencies:
@@ -109,10 +110,42 @@ Deployed using:
 ## 📂 Important Folders
 
 ```
+=======
+
+Install dependencies:
+
+npm install
+
+Run dev server:
+
+./node_modules/.bin/next dev
+
+Open:
+
+http://localhost:3000
+
+🏗 Production Build
+./node_modules/.bin/next build
+./node_modules/.bin/next start
+
+
+🌐 Deployment
+
+Deployed using:
+
+Vercel hosting
+
+GitHub integration
+
+Automatic builds from main branch
+
+📂 Important Folders
+>>>>>>> b3019a2 (update: Updated Hero Section.)
 /app                → App router pages
 /components         → UI components
 /componentsData     → Product data source
 /public             → Images, logos, assets
+<<<<<<< HEAD
 ```
 
 ---
@@ -120,10 +153,15 @@ Deployed using:
 ## 🖼 Assets Naming Convention
 
 ```
+=======
+
+🖼 Assets Naming Convention
+>>>>>>> b3019a2 (update: Updated Hero Section.)
 /public/aadi-handloom-logo.png
 /public/aadi-handloom-og.jpg
 /public/products/*
 /public/trust/*
+<<<<<<< HEAD
 ```
 
 ---
@@ -161,8 +199,60 @@ Frontend + UI Systems + Interactive Web Engineering
 ---
 
 ## 📜 License
+=======
+
+📞 Commerce Integration
+
+WhatsApp deep links used for:
+
+Product enquiries
+
+Contact form
+
+Direct conversion funnel
+
+📚 Learning Outcomes
+
+This project demonstrates:
+
+Next.js App Router architecture
+
+Component driven UI design
+
+Dynamic product rendering
+
+State + memo optimization
+
+Responsive luxury layouts
+
+SEO-aware structure
+
+Production deployment workflow
+
+👨‍💻 Author
+
+Aditya Kumar Bichhave
+B.Tech Computer Science (Game & Software Development Track)
+Frontend + UI Systems + Interactive Web Engineering
+
+📜 License
+>>>>>>> b3019a2 (update: Updated Hero Section.)
 
 Project created for educational + business use.
 All textile and brand content belongs to AADI Handloom.
 
+<<<<<<< HEAD
 ```
+=======
+
+---
+
+If you want, next I can give you:
+
+✅ GitHub portfolio version README  
+✅ Investor / business version README  
+✅ Resume-ready project description  
+✅ LinkedIn project summary  
+
+Say: **“README added — next step”** and we continue deployment pipeline.
+>>>>>>> b3019a2 (update: Updated Hero Section.)

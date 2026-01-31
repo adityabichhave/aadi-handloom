@@ -9,8 +9,8 @@ const slides = [
     image: "/Maheshwar-Fort-AADI-HANDLOOM.jpg",
     title: "Where It All Began",
     subtitle: "The Legacy of Maheshwar Fort",
-    cta: "View Dupattas",
-    href: "/products/zari-temple-border",
+    cta: "View All Products",
+    href: "/products",
   },
     {
     id: 2,
@@ -18,7 +18,7 @@ const slides = [
     title: "Silk That Speaks Heritage",
     subtitle: "Handwoven with Sacred Precision",
     cta: "Discover Sarees",
-    href: "/products/zari-temple-border",
+    href: "/products?type=saree&category=silk&page=1",
   },
   {
     id: 0,
@@ -26,7 +26,7 @@ const slides = [
     title: "Royal Maheshwari Zari",
     subtitle: "Woven for Generations in Maheshwar",
     cta: "Explore Sarees",
-    href: "/products/zari-temple-border",
+    href: "/products",
   },
   {
     id: 1,
@@ -34,7 +34,7 @@ const slides = [
     title: "Temple Border Elegance",
     subtitle: "An Heirloom Craft Tradition",
     cta: "View Sarees",
-    href: "/products/zari-temple-border", 
+    href: "/products", 
   },
 
 ];
