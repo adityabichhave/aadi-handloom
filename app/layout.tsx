@@ -17,6 +17,10 @@ export const metadata = {
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
+  verification: {
+    google: "ZrLHUD6fceporjl65QYGySoQzHMNBQHSm-FQ",
+  },
+
   openGraph: {
     title: "AADI Handloom – Authentic Maheshwari Sarees",
     description:
