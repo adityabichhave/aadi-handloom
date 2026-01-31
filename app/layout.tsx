@@ -6,10 +6,12 @@ import type { ReactNode } from "react";
 import Footer from "../components/Footer";
 
 export const metadata = {
+  metadataBase: new URL("https://aadihandloom.com"),
   title: {
     default: "AADI Handloom – Authentic Maheshwari Sarees from Maheshwar",
     template: "%s | AADI Handloom",
   },
+
   description:
     "AADI Handloom offers authentic Maheshwari sarees handcrafted in Maheshwar. Pure silk, cotton-silk, and traditional handloom sarees rooted in heritage.",
   icons: {
