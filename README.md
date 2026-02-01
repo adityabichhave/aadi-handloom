@@ -1,4 +1,4 @@
-# AADI Handloom — Luxury Maheshwari Handloom Website
+# AADI Handloom — Luxury Maheshwari Handloom Website - aadihandloom.com
 
 A premium handcrafted web experience for AADI Handloom — a Maheshwari saree, suit, and dupatta house based in Maheshwar & Indore.
 
