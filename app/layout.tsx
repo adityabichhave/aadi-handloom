@@ -15,7 +15,7 @@ export const metadata = {
   description:
     "AADI Handloom offers authentic Maheshwari sarees handcrafted in Maheshwar. Pure silk, cotton-silk, and traditional handloom sarees rooted in heritage.",
   icons: {
-    icon: "/aadi-handloom-favicon.png",
+    icon: "/favicon.ico",
     shortcut: "/favicon-32x32.png",
     apple: "/apple-touch-icon.png",
   },
@@ -26,15 +26,15 @@ export const metadata = {
   openGraph: {
     title: "AADI Handloom – Authentic Maheshwari Sarees",
     description:
-      "Discover pure handwoven Maheshwari sarees from Maheshwar. Heritage, craftsmanship, and authenticity since 2000.",
-    url: "https://www.aadihandloom.com",
+      "Discover pure handwoven Maheshwari sarees from Maheshwar. Heritage, craftsmanship, and authenticity since 1990.",
+    url: "https://aadihandloom.com",
     siteName: "AADI Handloom",
     images: [
       {
-        url: "/aadi-handloom-logo.png",
+        url: "https://aadihandloom.com/og-home.jpg",
         width: 800,
         height: 800,
-        alt: "AADI Handloom Logo",
+        alt: "AADI Handloom Maheshwari Sarees",
       },
     ],
     locale: "en_IN",

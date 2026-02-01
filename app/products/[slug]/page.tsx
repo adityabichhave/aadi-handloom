@@ -33,15 +33,16 @@ export async function generateMetadata(
     description: product.description,
     url: `/products/${product.slug}`,
     images: image
-      ? [
-          {
-            url: image,
-            width: 1200,
-            height: 1600,
-            alt: product.name,
-          },
-        ]
-      : [],
+  ? [
+      {
+        url: `https://aadihandloom.com${image}`,
+        width: 1200,
+        height: 1600,
+        alt: product.name,
+      },
+    ]
+  : [],
+
   },
 };
 
