@@ -10,13 +10,16 @@ import AboutFounder from "../components/AboutFounder";
 import HomeContactStrip from "../components/HomeContactStrip";
 import HomeFAQ from "../components/HomeFAQ";
 
-
-
 export default function HomePage() {
   return (
     <>
+      {/* SEO H1 — invisible but critical */}
+      <h1 className="sr-only">
+        Authentic Maheshwari Handloom Sarees from Maheshwar – AADI Handloom
+      </h1>
+
       <Hero />
-      <ScrollIndicator/>
+      <ScrollIndicator />
       <Heritage />
       <Craft />
       <CraftToProducts />
@@ -25,7 +28,6 @@ export default function HomePage() {
       <AboutFounder />
       <HomeFAQ />
       <HomeContactStrip />
-      
     </>
   );
 }

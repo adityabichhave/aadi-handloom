@@ -11,7 +11,7 @@ type SortType = "newest" | "price-asc" | "price-desc";
 
 const ITEMS_PER_PAGE = 12;
 
-export default function ProductsPage() {
+export default function ProductsPageClient() {
   const searchParams = useSearchParams();
 
   const rawType = searchParams.get("type");
@@ -28,7 +28,7 @@ export default function ProductsPage() {
   const page = Number(searchParams.get("page") || 1);
 
   /* ================= TITLE OBSERVER ================= */
-  const headingRef = useRef<HTMLHeadingElement | null>(null);
+  const headingRef = useRef<HTMLDivElement | null>(null);
   const [showSubTitle, setShowSubTitle] = useState(false);
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function ProductsPage() {
     window.history.replaceState(null, "", `/products?${params.toString()}`);
   }, [type, category, filters, sortBy]);
 
-  /* ================= FILTER ================= */
+  /* ================= FILTER LOGIC ================= */
   const filteredProducts = products
     .filter((product) => {
       if (type && product.type !== type) return false;
@@ -78,6 +78,7 @@ export default function ProductsPage() {
           if (r === "under-7000") return price < 7000;
           if (r === "7000-9000") return price >= 7000 && price <= 9000;
           if (r === "above-9000") return price > 9000;
+          return false;
         });
         if (!match) return false;
       }
@@ -134,7 +135,6 @@ export default function ProductsPage() {
       />
 
       <main className="relative min-h-screen bg-[#f3ead7]">
-
         {/* heritage texture */}
         <div
           className="absolute inset-0 opacity-[0.05] pointer-events-none"
@@ -146,9 +146,8 @@ export default function ProductsPage() {
 
         <div ref={headingRef} className="h-[1px]" />
 
-        {/* ================= HEADER ================= */}
-        <div className="pt-24 md:pt-28 pb-8 md:pb-10 text-center px-4">
-
+        {/* HEADER */}
+        <header className="pt-24 md:pt-28 pb-10 text-center px-4">
           <p className="text-[11px] tracking-[0.5em] uppercase text-[#8b7b4b] mb-3">
             Handwoven Collection
           </p>
@@ -161,242 +160,159 @@ export default function ProductsPage() {
             Showing {totalProducts === 0 ? 0 : startIndex + 1}–{endIndex} of{" "}
             {totalProducts} pieces
           </p>
-        </div>
+        </header>
 
-        {/* ================= GRID ================= */}
-        {/* ================= GRID ================= */}
-<div className="
-  max-w-7xl mx-auto
-  px-4 md:px-6
-  grid
-  grid-cols-2 md:grid-cols-4
-  gap-6 md:gap-12
-  pb-20 md:pb-28
-">
-  {visibleProducts.map((product) => {
-    const preview = product.colors?.[0]?.images?.[0];
+        {/* ================= PRODUCT CATALOG ================= */}
+        <section
+          aria-label="Product Catalog"
+          className="max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-28"
+        >
+          <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
+            {visibleProducts.map((product) => {
+              const preview = product.colors?.[0]?.images?.[0];
 
-    return (
-      <Link
-        key={product.slug}
-        href={`/products/${product.slug}`}
-        className="group"
-      >
-        <div className="
-          relative bg-[#fbf9f4]
-          border border-[#d8caa2]/60
-          transition-all duration-400
-          hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)]
-        ">
-          {/* IMAGE — mobile tighter ratio */}
-          <div className="relative aspect-[3/4] md:aspect-[3/4] overflow-hidden">
-            {preview && (
-              <Image
-                src={preview}
-                alt={product.name}
-                fill
-                className="
-                  object-cover
-                  transition-transform duration-[1200ms]
-                  group-hover:scale-110
-                "
-              />
+              return (
+                <li key={product.slug} className="list-none">
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className="group block"
+                  >
+                    <article className="bg-[#fbf9f4] border border-[#d8caa2]/60 transition hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+                      {/* IMAGE */}
+                      <div className="relative aspect-[3/4] overflow-hidden">
+                        {preview && (
+                          <Image
+                            src={preview}
+                            alt={product.name}
+                            fill
+                            className="object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                          />
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                      </div>
+
+                      {/* INFO */}
+                      <div className="px-3 py-4 md:px-5 md:py-6 text-center">
+                        <h3 className="font-serif text-[14px] md:text-[15px] text-[#2a2118] mb-1">
+                          {product.name}
+                        </h3>
+                        <p className="text-[#8c7a45] text-sm font-medium">
+                          {product.price}
+                        </p>
+                      </div>
+
+                      {/* SEO PRODUCT SCHEMA */}
+                      <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{
+                          __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Product",
+                            name: product.name,
+                            image: preview
+                              ? [`https://aadihandloom.com${preview}`]
+                              : [],
+                            brand: {
+                              "@type": "Brand",
+                              name: "AADI Handloom",
+                            },
+                            offers: {
+                              "@type": "Offer",
+                              priceCurrency: "INR",
+                              price: product.price.replace(/[^\d]/g, ""),
+                              availability:
+                                "https://schema.org/InStock",
+                              url: `https://aadihandloom.com/products/${product.slug}`,
+                            },
+                          }),
+                        }}
+                      />
+                    </article>
+                  </Link>
+                </li>
+              );
+            })}
+
+            {visibleProducts.length === 0 && (
+              <li className="col-span-full text-center text-[#6b6253] py-20">
+                No products match the selected filters.
+              </li>
             )}
+          </ul>
+        </section>
 
-            {/* soft silk overlay */}
-            <div className="
-              absolute inset-0
-              bg-gradient-to-t
-              from-black/20 via-transparent to-transparent
-              opacity-70
-            " />
-          </div>
-
-          {/* INFO — compact mobile / rich desktop */}
-          <div className="
-            px-3 py-4
-            md:px-5 md:py-6
-            text-center
-          ">
-            <h3 className="
-              font-serif
-              text-[14px] md:text-[15px]
-              leading-snug
-              text-[#2a2118]
-              mb-1 md:mb-2
-            ">
-              {product.name}
-            </h3>
-
-            <p className="
-              text-[#8c7a45]
-              text-sm md:text-[15px]
-              font-medium
-            ">
-              {product.price}
-            </p>
-          </div>
-        </div>
-      </Link>
-    );
-  })}
-
-  {visibleProducts.length === 0 && (
-    <p className="col-span-full text-center text-[#6b6253] py-20">
-      No products match the selected filters.
-    </p>
-  )}
-</div>
-
-
-        {/* ================= PAGINATION ================= */}
+        {/* PAGINATION */}
         {totalPages > 1 && (
-          <div className="flex justify-center pb-24">
+          <nav className="flex justify-center pb-24" aria-label="Pagination">
             <div className="flex gap-2">
               {Array.from({ length: totalPages }).map((_, i) => {
                 const p = i + 1;
-
                 return (
                   <Link
                     key={p}
                     href={`/products?type=${type ?? ""}&category=${category ?? ""}&page=${p}`}
-                    className={`
-                      w-11 h-11 flex items-center justify-center
-                      border text-sm transition
-                      ${
-                        safePage === p
-                          ? "bg-[#bfa25a] text-[#1e140b] border-[#bfa25a]"
-                          : "border-[#d8caa2] text-[#6b6253] hover:bg-[#efe6d6]"
-                      }
-                    `}
+                    className={`w-11 h-11 flex items-center justify-center border text-sm ${
+                      safePage === p
+                        ? "bg-[#bfa25a] text-[#1e140b] border-[#bfa25a]"
+                        : "border-[#d8caa2] text-[#6b6253] hover:bg-[#efe6d6]"
+                    }`}
                   >
                     {p}
                   </Link>
                 );
               })}
             </div>
-          </div>
+          </nav>
         )}
       </main>
 
-      {/* ================= FILTER DRAWER ================= */}
+      {/* FILTER DRAWER */}
       {showFilter && (
-  <>
-    {/* OVERLAY */}
-    <div
-      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-      onClick={() => setShowFilter(false)}
-    />
+        <>
+          <div
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            onClick={() => setShowFilter(false)}
+          />
 
-    {/* PANEL */}
-    <aside
-      className="
-        fixed right-0 top-14 z-50
-        w-[360px] max-w-[92vw]
-        h-[calc(100vh-56px)]
-        bg-[#f6f1ea]
-        border-l border-[#d8caa2]/60
-        p-8 overflow-y-auto
-        shadow-[0_0_40px_rgba(0,0,0,0.25)]
-        flex flex-col
-      "
-    >
-      {/* HEADER */}
-      <div className="flex items-center justify-between mb-8">
-        <h3 className="font-serif text-lg tracking-[0.25em] text-[#bfa25a]">
-          Refine Selection
-        </h3>
+          <aside className="fixed right-0 top-14 z-50 w-[360px] max-w-[92vw] h-[calc(100vh-56px)] bg-[#f6f1ea] border-l border-[#d8caa2]/60 p-8 overflow-y-auto">
+            <h3 className="font-serif text-lg tracking-[0.25em] text-[#bfa25a] mb-8">
+              Refine Selection
+            </h3>
 
-        <button
-          onClick={() => setShowFilter(false)}
-          className="text-xl text-[#2a2118]"
-        >
-          ×
-        </button>
-      </div>
+            <FilterBlock
+              title="Price"
+              options={[
+                ["under-7000", "Under ₹7,000"],
+                ["7000-9000", "₹7,000 – ₹9,000"],
+                ["above-9000", "Above ₹9,000"],
+              ]}
+              state={filters.price}
+              set={(v) => setFilters((p) => ({ ...p, price: v }))}
+            />
 
-      {/* SCROLL BODY */}
-      <div className="space-y-8 flex-1">
+            <FilterBlock
+              title="Product Type"
+              options={[
+                ["saree", "Sarees"],
+                ["suit", "Suits"],
+                ["dupatta", "Dupattas"],
+              ]}
+              state={filters.type}
+              set={(v) => setFilters((p) => ({ ...p, type: v }))}
+            />
 
-        {/* PRICE */}
-        <FilterBlock
-          title="Price"
-          options={[
-            ["under-7000", "Under ₹7,000"],
-            ["7000-9000", "₹7,000 – ₹9,000"],
-            ["above-9000", "Above ₹9,000"],
-          ]}
-          state={filters.price}
-          set={(v) => setFilters((p) => ({ ...p, price: v }))}
-        />
-
-        {/* TYPE */}
-        <FilterBlock
-          title="Product Type"
-          options={[
-            ["saree", "Sarees"],
-            ["suit", "Suits"],
-            ["dupatta", "Dupattas"],
-          ]}
-          state={filters.type}
-          set={(v) => setFilters((p) => ({ ...p, type: v }))}
-        />
-
-
-
-        {/* SORT */}
-        <div>
-          <p className="text-xs uppercase tracking-[0.35em] mb-3 text-[#2a2118]">
-            Sort By
-          </p>
-
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
-            className="
-              w-full border border-[#bfa25a]/50
-              bg-white px-4 py-3 text-sm
-            "
-          >
-            <option value="newest">Newest</option>
-            <option value="price-asc">Price — Low to High</option>
-            <option value="price-desc">Price — High to Low</option>
-          </select>
-        </div>
-      </div>
-
-      {/* FOOTER ACTIONS */}
-      <div className="pt-8 space-y-3">
-
-        <button
-          onClick={() => setShowFilter(false)}
-          className="
-            w-full py-3
-            bg-[#bfa25a]
-            text-black
-            text-xs tracking-[0.35em] uppercase
-          "
-        >
-          Apply Filters
-        </button>
-
-        <button
-          onClick={() =>
-            setFilters({ price: [], fabric: [], type: [] })
-          }
-          className="
-            w-full py-3
-            border border-[#bfa25a]
-            text-xs tracking-[0.35em] uppercase
-          "
-        >
-          Clear Filters
-        </button>
-      </div>
-    </aside>
-  </>
-)}
-    </>);
+            <button
+              onClick={() => setFilters({ price: [], fabric: [], type: [] })}
+              className="w-full mt-8 py-3 border border-[#bfa25a] text-xs tracking-[0.35em] uppercase"
+            >
+              Clear Filters
+            </button>
+          </aside>
+        </>
+      )}
+    </>
+  );
+}
 
 /* ================= FILTER BLOCK ================= */
 
@@ -426,4 +342,3 @@ function FilterBlock({ title, options, state, set }: any) {
     </div>
   );
 }
-} 
