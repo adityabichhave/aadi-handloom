@@ -4,7 +4,11 @@ import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { products } from "../../components/productsData";
+import { products } from "@/components/productsData";
+
+console.log("🔥 PRODUCTS LOADED:", products);
+
+
 import BackFilterBar from "../../components/BackFilterBar";
 
 type SortType = "newest" | "price-asc" | "price-desc";
@@ -25,7 +29,10 @@ export default function ProductsPageClient() {
       : rawType;
 
   const category = searchParams.get("category");
-  const page = Number(searchParams.get("page") || 1);
+  let pageParam = searchParams.get("page");
+
+const page = pageParam ? Number(pageParam) : 1;
+
 
   /* ================= TITLE OBSERVER ================= */
   const headingRef = useRef<HTMLDivElement | null>(null);
@@ -73,15 +80,18 @@ export default function ProductsPageClient() {
         return false;
 
       if (filters.price.length > 0) {
-        const price = Number(product.price.replace(/[^\d]/g, ""));
-        const match = filters.price.some((r) => {
-          if (r === "under-7000") return price < 7000;
-          if (r === "7000-9000") return price >= 7000 && price <= 9000;
-          if (r === "above-9000") return price > 9000;
-          return false;
-        });
-        if (!match) return false;
-      }
+  const price = Number(product.price.replace(/[^\d]/g, ""));
+
+  const match = filters.price.some((r) => {
+    if (r === "under-7000") return price < 7000;
+    if (r === "7000-9000") return price >= 7000 && price <= 9000;
+    if (r === "above-9000") return price > 9000;
+    return true; // IMPORTANT
+  });
+
+  if (!match) return false;
+}
+
 
       if (filters.fabric.length > 0) {
         const fabric = product.fabric.toLowerCase();
@@ -103,7 +113,8 @@ export default function ProductsPageClient() {
   const totalProducts = filteredProducts.length;
   const totalPages = Math.ceil(totalProducts / ITEMS_PER_PAGE);
 
-  const safePage = Math.min(page, totalPages || 1);
+  const safePage = Math.max(1, Math.min(page, totalPages || 1));
+
   const startIndex = (safePage - 1) * ITEMS_PER_PAGE;
   const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalProducts);
 
