@@ -1,7 +1,16 @@
 import { MetadataRoute } from "next";
+import { products } from "@/components/productsData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://aadihandloom.com";
+
+  /* ===== PRODUCT URLS (AUTO) ===== */
+  const productUrls = products.map((product) => ({
+    url: `${baseUrl}/products/${product.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.95,
+  }));
 
   /* ===== BLOG URLS ===== */
   const blogs = [
@@ -11,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog/handloom-vs-powerloom",
     "/blog/maheshwari-saree-buying-guide",
   ];
+
+  const blogUrls = blogs.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.9,
+  }));
 
   /* ===== STATIC PAGES ===== */
   const staticPages = [
@@ -29,12 +45,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.8,
   }));
 
-  const blogUrls = blogs.map((path) => ({
-    url: `${baseUrl}${path}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.9,
-  }));
-
-  return [...staticUrls, ...blogUrls];
+  return [...staticUrls, ...blogUrls, ...productUrls];
 }
