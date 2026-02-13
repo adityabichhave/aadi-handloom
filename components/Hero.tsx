@@ -62,7 +62,7 @@ export default function Hero() {
           observer.disconnect();
         }
       },
-      { threshold: 0.45 }
+      { threshold: 0.25 }
     );
 
     observer.observe(textRef.current);

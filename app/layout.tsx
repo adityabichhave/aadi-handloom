@@ -4,7 +4,17 @@ import CartDrawer from "../components/CartDrawer";
 import { CartProvider } from "../components/CartContext";
 import type { ReactNode } from "react";
 import Footer from "../components/Footer";
+import { Bodoni_Moda, Montserrat } from "next/font/google";
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
+export const brandFont = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400","600"],
+});
 
+export const bodyFont = Montserrat({
+  subsets: ["latin"],
+  weight: ["300","400"],
+});
 export const metadata = {
   metadataBase: new URL("https://aadihandloom.com"),
   title: {

@@ -248,3 +248,7 @@ body > div {
   from { transform: translateX(-120%); }
   to { transform: translateX(220%); }
 }
+@keyframes shine {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
+}
