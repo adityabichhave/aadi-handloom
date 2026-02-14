@@ -37,7 +37,7 @@ export default function Navbar() {
 
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-3">
-            <img src="/aadi-handloom-logo.png" className="w-9" alt="Aadi Handloom" />
+            <img src="/aadi-handloom-logo.png" className="w-14" alt="Aadi Handloom" />
             <div className="flex flex-col leading-none">
 
   {/* AADI = main brand */}

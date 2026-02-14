@@ -26,7 +26,6 @@ const collections = [
     items: [
       { name: "2 - piece Star Buti", slug: "2-piece-Star-Buti", image: "/categories/2-piece-star-buti.jpg" },
       { name: "2 - piece Buta Suits", slug: "2-piece-Buta-Suits", image: "/categories/2-piece-buta-suits.jpg" },
-
     ],
   },
   {
@@ -46,17 +45,14 @@ const collections = [
 export default function ProductCategories() {
   return (
     <section className="relative bg-[#f2e8cf] py-28 overflow-hidden">
-      {/* heritage texture */}
-      <div
-        className="absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage: "url('/maheshwari-thread.png')",
-          backgroundSize: "420px",
-        }}
-      />
+
+    
+
+      {/* subtle royal gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#efe2c2]/30 to-[#e7d6b1]/40 pointer-events-none"/>
 
       <div className="relative max-w-7xl mx-auto px-6 space-y-28">
-        {collections.map((collection, i) => (
+        {collections.map((collection) => (
           <CollectionGrid key={collection.id} collection={collection} />
         ))}
       </div>
@@ -75,20 +71,23 @@ function CollectionGrid({ collection }: any) {
       transition={{ duration: 1 }}
     >
       {/* ===== Heading ===== */}
-      <div className="text-center mb-14">
-        <p className="text-[10px] tracking-[0.5em] uppercase text-[#8b7b4b] mb-3">
+      <div className="text-center mb-16">
+        <p className="text-[10px] tracking-[0.55em] uppercase text-[#8b7b4b] mb-4">
           Handwoven Legacy
         </p>
 
-        <h2 className="text-3xl md:text-4xl font-serif tracking-[0.3em] text-[#bfa25a]">
+        <h2 className="text-3xl md:text-5xl font-serif tracking-[0.28em] text-[#bfa25a]">
           {collection.title}
         </h2>
 
-        <div className="mx-auto mt-6 h-px w-24 bg-[#bfa25a]/40" />
+        <div className="mx-auto mt-6 h-px w-24 bg-[#bfa25a]/50" />
+
+        {/* luxury underline glow */}
+        <div className="mx-auto mt-2 h-px w-10 bg-[#bfa25a]/20 blur-md"/>
       </div>
 
       {/* ===== GRID ===== */}
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {collection.items.map((item: any) => (
           <Link
             key={item.slug}
@@ -96,23 +95,49 @@ function CollectionGrid({ collection }: any) {
             className="group"
           >
             <motion.div
-              whileHover={{ y: -6 }}
-              transition={{ duration: 0.35 }}
+              whileHover={{ y: -10 }}
+              transition={{ duration: 0.45 }}
               className="
                 relative aspect-[4/5]
                 overflow-hidden
                 bg-white
                 border border-[#bfa25a]/40
-                shadow-[0_10px_28px_rgba(0,0,0,0.18)]
+                shadow-[0_18px_50px_rgba(0,0,0,0.25)]
               "
             >
-              {/* image */}
+
+              {/* IMAGE */}
               <Image
                 src={item.image}
                 alt={item.name}
                 fill
-                className="object-cover transition-transform duration-[1600ms] group-hover:scale-[1.25]"
+                className="
+                  object-cover
+                  transition-transform
+                  duration-[1800ms]
+                  group-hover:scale-[1.22]
+                "
               />
+
+              {/* ===== PALLU REVEAL EFFECT ===== */}
+              <div className="
+                absolute inset-0
+                opacity-0 group-hover:opacity-100
+                transition duration-700
+              ">
+                <div className="
+                  absolute -left-[120%] top-0 h-full w-[70%]
+                  bg-gradient-to-r
+                  from-transparent
+                  via-[#e7c97a]/35
+                  to-transparent
+                  rotate-[12deg]
+                  group-hover:left-[140%]
+                  transition-all
+                  duration-[1600ms]
+                  ease-[cubic-bezier(0.22,1,0.36,1)]
+                "/>
+              </div>
 
               {/* silk shimmer sweep */}
               <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition">
@@ -124,16 +149,24 @@ function CollectionGrid({ collection }: any) {
                 " />
               </div>
 
+              {/* royal dark overlay */}
+              <div className="
+                absolute inset-0
+                bg-gradient-to-t from-black/40 via-transparent to-transparent
+                opacity-0 group-hover:opacity-100
+                transition
+              "/>
+
               {/* premium gradient label bar */}
               <div className="
                 absolute bottom-0 inset-x-0
                 bg-gradient-to-t from-[#3b2b20]/95 via-[#3b2b20]/70 to-transparent
-                backdrop-blur-sm
-                py-4
+                backdrop-blur-md
+                py-5
               ">
                 <p className="
                   text-center text-[#f1e6c8]
-                  text-sm tracking-[0.25em]
+                  text-sm tracking-[0.3em]
                   uppercase font-medium
                 ">
                   {item.name}
@@ -144,30 +177,40 @@ function CollectionGrid({ collection }: any) {
               <div className="
                 absolute inset-0 opacity-0 group-hover:opacity-100 transition
                 border border-[#bfa25a]
-                shadow-[0_0_30px_rgba(191,162,90,0.45)]
+                shadow-[0_0_35px_rgba(191,162,90,0.55)]
               " />
+
             </motion.div>
           </Link>
         ))}
       </div>
 
       {/* ===== CTA ===== */}
-      <div className="flex justify-center mt-16">
+      <div className="flex justify-center mt-20">
         <Link
           href={`/products?type=${collection.type}`}
           className="
+            relative
             border border-[#bfa25a]
-            px-14 py-4
+            px-16 py-5
             text-[11px]
-            tracking-[0.45em]
+            tracking-[0.5em]
             uppercase
             text-[#2a2118]
+            overflow-hidden
             transition
-            hover:bg-[#bfa25a]
             hover:text-black
           "
         >
-          {collection.viewAllLabel} →
+          <span className="relative z-10">{collection.viewAllLabel} →</span>
+
+          {/* gold sweep */}
+          <span className="
+            absolute inset-0 bg-[#bfa25a]
+            scale-x-0 origin-left
+            group-hover:scale-x-100
+            transition duration-500
+          "/>
         </Link>
       </div>
     </motion.div>

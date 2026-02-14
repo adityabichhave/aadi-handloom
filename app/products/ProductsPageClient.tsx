@@ -5,14 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { products } from "@/components/productsData";
-
-console.log("🔥 PRODUCTS LOADED:", products);
-
+import { motion } from "framer-motion";
 
 import BackFilterBar from "../../components/BackFilterBar";
 
 type SortType = "newest" | "price-asc" | "price-desc";
-
 const ITEMS_PER_PAGE = 12;
 
 export default function ProductsPageClient() {
@@ -30,9 +27,7 @@ export default function ProductsPageClient() {
 
   const category = searchParams.get("category");
   let pageParam = searchParams.get("page");
-
-const page = pageParam ? Number(pageParam) : 1;
-
+  const page = pageParam ? Number(pageParam) : 1;
 
   /* ================= TITLE OBSERVER ================= */
   const headingRef = useRef<HTMLDivElement | null>(null);
@@ -80,18 +75,15 @@ const page = pageParam ? Number(pageParam) : 1;
         return false;
 
       if (filters.price.length > 0) {
-  const price = Number(product.price.replace(/[^\d]/g, ""));
-
-  const match = filters.price.some((r) => {
-    if (r === "under-7000") return price < 7000;
-    if (r === "7000-9000") return price >= 7000 && price <= 9000;
-    if (r === "above-9000") return price > 9000;
-    return true; // IMPORTANT
-  });
-
-  if (!match) return false;
-}
-
+        const price = Number(product.price.replace(/[^\d]/g, ""));
+        const match = filters.price.some((r) => {
+          if (r === "under-7000") return price < 7000;
+          if (r === "7000-9000") return price >= 7000 && price <= 9000;
+          if (r === "above-9000") return price > 9000;
+          return true;
+        });
+        if (!match) return false;
+      }
 
       if (filters.fabric.length > 0) {
         const fabric = product.fabric.toLowerCase();
@@ -135,8 +127,6 @@ const page = pageParam ? Number(pageParam) : 1;
     ? `All ${typeLabel}`
     : "All Products";
 
-  /* ================= UI ================= */
-
   return (
     <>
       <BackFilterBar
@@ -145,27 +135,29 @@ const page = pageParam ? Number(pageParam) : 1;
         onFilterClick={() => setShowFilter(true)}
       />
 
-      <main className="relative min-h-screen bg-[#f3ead7]">
+      <main className="relative min-h-screen bg-[#f3ead7] overflow-hidden">
+        {/* cinematic luxury light */}
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#fff6dc]/40 blur-[160px] opacity-60 pointer-events-none" />
+        <div className="absolute bottom-[-200px] right-[-200px] w-[700px] h-[700px] bg-[#3a2d1c]/20 blur-[140px] pointer-events-none" />
+
         {/* heritage texture */}
         <div
           className="absolute inset-0 opacity-[0.05] pointer-events-none"
-          style={{
-            backgroundImage: "url('/maheshwari-thread.png')",
-            backgroundSize: "420px",
-          }}
         />
 
         <div ref={headingRef} className="h-[1px]" />
 
         {/* HEADER */}
-        <header className="pt-24 md:pt-28 pb-10 text-center px-4">
-          <p className="text-[11px] tracking-[0.5em] uppercase text-[#8b7b4b] mb-3">
+        <header className="pt-36 md:pt-44 pb-16 text-center px-4 relative">
+          <p className="text-[11px] tracking-[0.65em] uppercase text-[#8b7b4b] mb-6">
             Handwoven Collection
           </p>
 
-          <h1 className="text-3xl md:text-4xl font-serif tracking-[0.28em] text-[#bfa25a] mb-4">
+          <h1 className="text-[34px] md:text-[48px] font-serif tracking-[0.18em] text-[#bfa25a] mb-6 leading-[1.2]">
             {pageTitle}
           </h1>
+
+          <div className="w-16 h-[1px] bg-[#c9b37a] mx-auto mb-6 opacity-60" />
 
           <p className="text-sm text-[#5a5146]">
             Showing {totalProducts === 0 ? 0 : startIndex + 1}–{endIndex} of{" "}
@@ -173,46 +165,61 @@ const page = pageParam ? Number(pageParam) : 1;
           </p>
         </header>
 
-        {/* ================= PRODUCT CATALOG ================= */}
-        <section
-          aria-label="Product Catalog"
-          className="max-w-7xl mx-auto px-4 md:px-6 pb-20 md:pb-28"
-        >
-          <ul className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12">
+        {/* ================= PRODUCT GRID ================= */}
+        <section className="max-w-7xl mx-auto px-4 md:px-6 pb-28 md:pb-32">
+          <ul className="grid grid-cols-2 md:grid-cols-4 gap-7 md:gap-16">
             {visibleProducts.map((product) => {
-              const preview = product.colors?.[0]?.images?.[0];
+              const mainImg = product.colors?.[0]?.images?.[0];
+              const hoverImg =
+                product.colors?.[0]?.images?.[1] ||
+                product.colors?.[1]?.images?.[0] ||
+                mainImg;
 
               return (
                 <li key={product.slug} className="list-none">
-                  <Link
-                    href={`/products/${product.slug}`}
-                    className="group block"
-                  >
-                    <article className="bg-[#fbf9f4] border border-[#d8caa2]/60 transition hover:shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
-                      {/* IMAGE */}
+                  <Link href={`/products/${product.slug}`} className="block group">
+                    <article className="bg-[#fbf9f4] border border-[#d8caa2]/60 transition-all duration-700 hover:shadow-[0_40px_90px_rgba(0,0,0,0.22)]">
+
+                      {/* ===== IMAGE AREA ===== */}
                       <div className="relative aspect-[3/4] overflow-hidden">
-                        {preview && (
+
+                        {/* main image */}
+                        {mainImg && (
                           <Image
-                            src={preview}
+                            src={mainImg}
                             alt={product.name}
                             fill
-                            className="object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                            className="object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
                           />
                         )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+
+                        {/* pallu reveal image */}
+                        {hoverImg && (
+                          <Image
+                            src={hoverImg}
+                            alt="Pallu view"
+                            fill
+                            className="object-cover opacity-0 scale-110 transition-all duration-[1600ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:opacity-100 group-hover:scale-100"
+                          />
+                        )}
+
+
+                        {/* luxury shadow bottom */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent opacity-70" />
                       </div>
 
-                      {/* INFO */}
-                      <div className="px-3 py-4 md:px-5 md:py-6 text-center">
-                        <h3 className="font-serif text-[14px] md:text-[15px] text-[#2a2118] mb-1">
+                      {/* ===== INFO ===== */}
+                      <div className="px-4 py-6 md:px-6 md:py-7 text-center">
+                        <h3 className="font-serif text-[15px] md:text-[16px] text-[#2a2118] mb-2 tracking-[0.02em]">
                           {product.name}
                         </h3>
-                        <p className="text-[#8c7a45] text-sm font-medium">
+
+                        <p className="text-[#8c7a45] text-sm tracking-[0.1em] font-medium">
                           {product.price}
                         </p>
                       </div>
 
-                      {/* SEO PRODUCT SCHEMA */}
+                      {/* schema */}
                       <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{
@@ -220,19 +227,15 @@ const page = pageParam ? Number(pageParam) : 1;
                             "@context": "https://schema.org",
                             "@type": "Product",
                             name: product.name,
-                            image: preview
-                              ? [`https://aadihandloom.com${preview}`]
+                            image: mainImg
+                              ? [`https://aadihandloom.com${mainImg}`]
                               : [],
-                            brand: {
-                              "@type": "Brand",
-                              name: "AADI Handloom",
-                            },
+                            brand: { "@type": "Brand", name: "AADI Handloom" },
                             offers: {
                               "@type": "Offer",
                               priceCurrency: "INR",
                               price: product.price.replace(/[^\d]/g, ""),
-                              availability:
-                                "https://schema.org/InStock",
+                              availability: "https://schema.org/InStock",
                               url: `https://aadihandloom.com/products/${product.slug}`,
                             },
                           }),
@@ -243,28 +246,22 @@ const page = pageParam ? Number(pageParam) : 1;
                 </li>
               );
             })}
-
-            {visibleProducts.length === 0 && (
-              <li className="col-span-full text-center text-[#6b6253] py-20">
-                No products match the selected filters.
-              </li>
-            )}
           </ul>
         </section>
 
         {/* PAGINATION */}
         {totalPages > 1 && (
-          <nav className="flex justify-center pb-24" aria-label="Pagination">
-            <div className="flex gap-2">
+          <nav className="flex justify-center pb-32">
+            <div className="flex gap-3">
               {Array.from({ length: totalPages }).map((_, i) => {
                 const p = i + 1;
                 return (
                   <Link
                     key={p}
                     href={`/products?type=${type ?? ""}&category=${category ?? ""}&page=${p}`}
-                    className={`w-11 h-11 flex items-center justify-center border text-sm ${
+                    className={`w-12 h-12 flex items-center justify-center border text-sm transition-all duration-500 ${
                       safePage === p
-                        ? "bg-[#bfa25a] text-[#1e140b] border-[#bfa25a]"
+                        ? "bg-[#bfa25a] text-black border-[#bfa25a] shadow-md"
                         : "border-[#d8caa2] text-[#6b6253] hover:bg-[#efe6d6]"
                     }`}
                   >
@@ -285,8 +282,8 @@ const page = pageParam ? Number(pageParam) : 1;
             onClick={() => setShowFilter(false)}
           />
 
-          <aside className="fixed right-0 top-14 z-50 w-[360px] max-w-[92vw] h-[calc(100vh-56px)] bg-[#f6f1ea] border-l border-[#d8caa2]/60 p-8 overflow-y-auto">
-            <h3 className="font-serif text-lg tracking-[0.25em] text-[#bfa25a] mb-8">
+          <aside className="fixed right-0 top-14 z-50 w-[380px] max-w-[92vw] h-[calc(100vh-56px)] bg-[#f6f1ea] border-l border-[#d8caa2]/60 p-10 overflow-y-auto">
+            <h3 className="font-serif text-lg tracking-[0.35em] text-[#bfa25a] mb-10">
               Refine Selection
             </h3>
 
@@ -298,7 +295,7 @@ const page = pageParam ? Number(pageParam) : 1;
                 ["above-9000", "Above ₹9,000"],
               ]}
               state={filters.price}
-              set={(v) => setFilters((p) => ({ ...p, price: v }))}
+              set={(v: any) => setFilters((p) => ({ ...p, price: v }))}
             />
 
             <FilterBlock
@@ -309,12 +306,12 @@ const page = pageParam ? Number(pageParam) : 1;
                 ["dupatta", "Dupattas"],
               ]}
               state={filters.type}
-              set={(v) => setFilters((p) => ({ ...p, type: v }))}
+              set={(v: any) => setFilters((p) => ({ ...p, type: v }))}
             />
 
             <button
               onClick={() => setFilters({ price: [], fabric: [], type: [] })}
-              className="w-full mt-8 py-3 border border-[#bfa25a] text-xs tracking-[0.35em] uppercase"
+              className="w-full mt-10 py-4 border border-[#bfa25a] text-xs tracking-[0.4em] uppercase hover:bg-[#bfa25a] hover:text-black transition-all duration-500"
             >
               Clear Filters
             </button>
@@ -329,13 +326,16 @@ const page = pageParam ? Number(pageParam) : 1;
 
 function FilterBlock({ title, options, state, set }: any) {
   return (
-    <div className="mb-8">
-      <p className="uppercase tracking-[0.3em] text-xs text-[#8b7b4b] mb-4">
+    <div className="mb-10">
+      <p className="uppercase tracking-[0.35em] text-xs text-[#8b7b4b] mb-5">
         {title}
       </p>
 
       {options.map(([id, label]: any) => (
-        <label key={id} className="flex items-center gap-3 mb-3 text-sm">
+        <label
+          key={id}
+          className="flex items-center gap-3 mb-4 text-sm text-[#2a2118] cursor-pointer"
+        >
           <input
             type="checkbox"
             checked={state.includes(id)}
@@ -346,6 +346,7 @@ function FilterBlock({ title, options, state, set }: any) {
                   : state.filter((x: any) => x !== id)
               )
             }
+            className="accent-[#bfa25a]"
           />
           {label}
         </label>

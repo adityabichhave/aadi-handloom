@@ -5,7 +5,26 @@ import { CartProvider } from "../components/CartContext";
 import type { ReactNode } from "react";
 import Footer from "../components/Footer";
 import { Bodoni_Moda, Montserrat } from "next/font/google";
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&display=swap" rel="stylesheet"/>
+import { Cinzel, Cormorant_Garamond, Great_Vibes } from "next/font/google";
+
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400","500","600","700"],
+  variable: "--font-cinzel",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300","400","500","600","700"],
+  variable: "--font-cormorant",
+});
+
+const vibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-vibes",
+});
 export const brandFont = Bodoni_Moda({
   subsets: ["latin"],
   weight: ["400","600"],
@@ -75,8 +94,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
       </head>
-      <body>
-        <CartProvider>
+      <body className={`${cinzel.variable} ${cormorant.variable} ${vibes.variable} font-[var(--font-cormorant)] bg-[#f3ead9] text-[#2a2118]`}><CartProvider>
           {/* FIXED NAVBAR */}
           <Navbar />
 
@@ -89,6 +107,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <CartDrawer />
           <Footer />
         </CartProvider>
+        <p className="font-[var(--font-vibes)] text-4xl text-[#c6a95a]">
+Aadi Handloom
+</p>
       </body>
     </html>
   );

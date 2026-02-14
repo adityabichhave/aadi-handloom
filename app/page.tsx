@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-import Products from "../components/Products";
+
 import ScrollIndicator from "../components/ScrollIndicator";
 import Craft from "../components/Craft";
 import CraftToProducts from "../components/CraftToProducts";
@@ -9,6 +9,7 @@ import AboutFounder from "../components/AboutFounder";
 import HomeContactStrip from "../components/HomeContactStrip";
 import HomeFAQ from "../components/HomeFAQ";
 import HandloomMark from "@/components/HandloomMark";
+import SelectedPieces from "@/components/SelectedProducts";
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
       <Hero />
       <ScrollIndicator />
       <HandloomMark />
+      <SelectedPieces />
       <Craft />
       <CraftToProducts />
       <FeaturedWeaves />

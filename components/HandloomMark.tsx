@@ -2,7 +2,7 @@
 
 export default function HandloomMark() {
 return (
-<section className="relative bg-[#f2e8cf] py-24 md:py-32 overflow-hidden">
+<section className="relative bg-[#f2e8cf] py-24 md:py-20 overflow-hidden">
 
   {/* background aura */}
   <div className="absolute inset-0 opacity-[0.05] pointer-events-none" />

@@ -6,23 +6,22 @@ import Image from "next/image";
 const steps = [
   {
     title: "Hand-Spun Yarn",
-    desc: "Natural fibres are twisted slowly by hand, preserving strength, texture, and soul.",
+    desc: "Natural fibres are twisted slowly by hand, preserving strength, texture, and character.",
     image: "/craft/yarn.jpg",
   },
   {
     title: "Loom Woven",
-    desc: "Traditional pit looms operated by skilled artisans shape every weave.",
+    desc: "Traditional pit looms operated by master artisans shape every Maheshwari weave with precision.",
     image: "/craft/AADI-HANDLOOM-loom.jpg",
   },
   {
-  title: "Narmada Leher Borders",
-  desc: "A rhythmic geometric border inspired by the sacred flow of the Narmada River, translated into stepped wave patterns that echo movement, balance, and timeless Maheshwari craftsmanship.",
-  image: "/craft/border.jpg",
-},
-
+    title: "Narmada Leher Borders",
+    desc: "Inspired by the sacred Narmada River, rhythmic borders echo movement and timeless Maheshwari identity.",
+    image: "/craft/border.jpg",
+  },
   {
     title: "Royal Finish",
-    desc: "Balanced weight, soft drape, and timeless elegance.",
+    desc: "Balanced weight, soft drape and enduring elegance define every finished textile.",
     image: "/craft/finish.jpg",
   },
 ];
@@ -34,9 +33,7 @@ export default function Craft() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("reveal");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("reveal");
         });
       },
       { threshold: 0.2 }
@@ -47,118 +44,128 @@ export default function Craft() {
   }, []);
 
   return (
-<section
-  className="relative z-0 py-28 px-6 overflow-hidden isolate"
-  style={{
-    background: `
-      radial-gradient(
-        circle at 50% 20%,
-        rgba(214,184,116,0.12),
-        transparent 60%
-      ),
-      linear-gradient(
-        180deg,
-        #f2e8cf 0%,
-        #f2ead8 100%
-      )
-    `,
-  }}
->
+    <section className="relative py-12 md:py-20 px-5 md:px-8 overflow-hidden bg-[#f3ead9]">
 
-    {/* MOVING THREAD SHIMMER */}
-<div
-  className="absolute inset-0 opacity-[0.06] pointer-events-none animate-thread"
-  style={{
-    backgroundImage: "url('/maheshwari-thread.png')",
-    backgroundSize: "260px",
-  }}
-/>
-
-    {/* TEXTILE TEXTURE */}
-<div
-  className="absolute inset-0 opacity-[0.08] pointer-events-none"
-  style={{
-    backgroundImage: "url('/maheshwari-thread.png')",
-    backgroundSize: "420px",
-  }}
-
-  
-/>
-
-
-      {/* subtle thread texture */}
-      <div
-        className="absolute inset-0 opacity-[0.07] pointer-events-none"
-        style={{
-          backgroundImage: "url('/maheshwari-thread.png')",
-          backgroundSize: "500px",
-        }}
-      />
+      {/* luxury glow */}
+      <div className="absolute top-[-200px] left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#e8d7a7]/30 blur-[180px] opacity-60 pointer-events-none"/>
 
       {/* heading */}
-      <div className="relative max-w-6xl mx-auto text-center mb-16">
-        <h2 className="text-[#bfa25a] tracking-[0.35em] uppercase text-lg mb-4">
-          The Craft
-        </h2>
-        <p className="max-w-xl mx-auto text-[#3a2f23] text-[16px] leading-[1.8]">
-          Every Maheshwari saree is patiently shaped by human hands — never by machines.
-        </p>
-      </div>
+      <div className="relative max-w-3xl mx-auto text-center mb-12 md:mb-20">
 
-      {/* grid */}
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-        {steps.map((step, i) => (
-          <div
-            key={step.title}
-            ref={(el) => {
-              if (el) itemsRef.current[i] = el;
-            }}
-            className="craft-item flex flex-col"
-          >
-            {/* image */}
-            <div className="relative w-full aspect-[4/3] overflow-hidden mb-5">
-              <Image
-                src={step.image}
-                alt={step.title}
-                fill
-                className="object-cover transition-transform duration-[1200ms] ease-out craft-img"
-              />
-              <div className="absolute inset-0 shadow-[inset_0_0_70px_rgba(0,0,0,0.35)]" />
-            </div>
+  <p className="font-[var(--font-cinzel)] text-[10px] tracking-[0.6em] uppercase text-[#b49a5c] mb-5">
+    AADI Handloom
+  </p>
 
-            {/* text */}
-            <h3 className="font-serif text-xl text-[#bfa25a] mb-2">
-              {step.title}
-            </h3>
-            <p className="text-[#2a2118] text-[15px] leading-[1.75] max-w-md">
-              {step.desc}
-            </p>
-          </div>
-        ))}
-      </div>
+  <h2 className="
+  font-[var(--font-cinzel)]
+  text-[30px] md:text-[48px]
+  leading-[1.2]
+  text-[#2a2118]
+  mb-6
+  tracking-[0.04em]
+  ">
+    The Making of a Maheshwari
+  </h2>
 
-      {/* fade into next section */}
-      {/* FABRIC DISSOLVE INTO PRODUCTS */}
-<div className="absolute bottom-0 left-0 w-full h-36 pointer-events-none">
-  {/* base fade */}
-  <div className="absolute inset-0 bg-gradient-to-t from-[#f2ead8] via-[#f4efe8]/70 to-transparent" />
+  <div className="w-20 h-[1px] bg-[#c6a95a] mx-auto mb-6 opacity-70"/>
 
-  {/* thread texture bridge */}
-  <div
-    className="absolute inset-0 opacity-[0.12]"
-    style={{
-      backgroundImage: "url('/maheshwari-thread.png')",
-      backgroundSize: "380px",
-    }}
-  />
+  <p className="
+  font-[var(--font-cormorant)]
+  max-w-xl mx-auto
+  text-[#4a3f31]
+  text-[16px] md:text-[18px]
+  leading-[1.9]
+  tracking-[0.02em]
+  ">
+    Every Maheshwari textile is patiently shaped by human hands — never rushed, never automated.
+  </p>
+
 </div>
 
+      {/* steps */}
+      <div className="relative max-w-6xl mx-auto space-y-14 md:space-y-24">
 
-      {/* animations */}
+        {steps.map((step, i) => {
+          const reverse = i % 2 !== 0;
+
+          return (
+            <div
+              key={step.title}
+              ref={(el) => {
+                if (el) itemsRef.current[i] = el;
+              }}
+              className={`
+              craft-item
+              flex flex-col ${reverse ? "md:flex-row-reverse" : "md:flex-row"}
+              items-center gap-8 md:gap-16
+              `}
+            >
+
+              {/* image */}
+              <div className="relative w-full md:w-[52%] aspect-[4/3] overflow-hidden">
+                <Image
+                  src={step.image}
+                  alt={step.title}
+                  fill
+                  className="object-cover transition duration-[1600ms] ease-[cubic-bezier(0.19,1,0.22,1)] craft-img"
+                />
+                <div className="absolute inset-0 shadow-[inset_0_0_70px_rgba(0,0,0,0.35)]"/>
+              </div>
+
+              {/* text */}
+              <div className="md:w-[40%] text-center md:text-left">
+
+  {/* step number */}
+  <p className="
+font-[var(--font-cinzel)]
+text-[11px]
+tracking-[0.55em]
+uppercase
+text-[#c6a95a]
+mb-4
+opacity-80
+">
+{`0${i + 1}`}
+</p>
+
+  {/* title */}
+  <h3 className="
+font-[var(--font-cormorant)]
+text-[26px] md:text-[34px]
+text-[#2a2118]
+mb-4
+leading-[1.3]
+tracking-[0.03em]
+">
+{step.title}
+</h3>
+
+<div className="w-10 h-[1px] bg-[#c6a95a] mb-5 opacity-60"/>
+
+  {/* description */}
+ <p className="
+font-[var(--font-cormorant)]
+text-[#4a3f31]
+text-[16px] md:text-[17px]
+leading-[2]
+tracking-[0.01em]
+max-w-md
+mx-auto md:mx-0
+">
+{step.desc}
+</p>
+
+</div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* animation */}
       <style jsx global>{`
         .craft-item {
           opacity: 0;
-          transform: translateY(28px);
+          transform: translateY(30px);
           transition: opacity 0.9s ease, transform 0.9s ease;
         }
 
@@ -168,24 +175,9 @@ export default function Craft() {
         }
 
         .craft-item.reveal .craft-img {
-          transform: scale(1.035);
+          transform: scale(1.04);
         }
-
-        @keyframes thread {
-    0% {
-      background-position: 0 0;
-    }
-    100% {
-      background-position: 0 260px;
-    }
-  }
-  .animate-thread {
-    animation: thread 18s linear infinite;
-  }
-
-      `
-      }</style>
+      `}</style>
     </section>
   );
 }
-
