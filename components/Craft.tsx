@@ -126,7 +126,7 @@ mb-4
 opacity-80
 ">
 {`0${i + 1}`}
-</p>
+</p>  
 
   {/* title */}
   <h3 className="

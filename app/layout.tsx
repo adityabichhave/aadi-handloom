@@ -107,9 +107,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <CartDrawer />
           <Footer />
         </CartProvider>
-        <p className="font-[var(--font-vibes)] text-4xl text-[#c6a95a]">
-Aadi Handloom
-</p>
+
       </body>
     </html>
   );
