@@ -99,7 +99,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Navbar />
 
           {/* PUSH CONTENT BELOW NAVBAR */}
-          <main className="pt-[54px]">
+          <main className="pt-[0.6px]">
             {children}
           </main>
 

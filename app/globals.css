@@ -199,6 +199,16 @@ body > div {
   }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  min-width: 200%;
+  animation: marquee 22s linear infinite;
+}
 .animate-scrollDot {
   animation: scrollDot 1.8s ease-in-out infinite;
 }

@@ -68,14 +68,14 @@ export default function ProductClient({ product }: { product: Product }) {
   return (
     <>
       {/* ===== LUXURY SUB NAV ===== */}
-<div className="sticky top-[64px] z-30 bg-[#f2e8cf]/80 backdrop-blur-md border-b border-[#c6a95a]/20">
+<div className="sticky top-[0px] h-16 z-30 bg-[#f3ead9]/80 backdrop-blur-md border-b -mt-[100px] border-[#c6a95a]/20">
   <div className="max-w-6xl mx-auto px-4 py-4 text-center">
 
     <p className="text-[10px] tracking-[0.55em] uppercase text-[#9c8451] mb-2">
       AADI HANDLOOM
     </p>
 
-    <h1 className="font-[var(--font-cinzel)] text-[15px] md:text-[18px] tracking-[0.25em] text-[#2a2118] leading-tight">
+    <h1 className="font-[var(--font-cinzel)] text-[15px] md:text-[16px] tracking-[0.25em] text-[#2a2118] leading-tight">
       {product.name}
     </h1>
 
@@ -83,7 +83,7 @@ export default function ProductClient({ product }: { product: Product }) {
 </div>
 
       {/* ================= HERO ================= */}
-      <main className="bg-[#f2e8cf] pt-[90px]">
+      <main className="bg-[#f2e8cf] pt-[50px]">
 
         <section className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
 

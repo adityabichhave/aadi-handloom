@@ -96,7 +96,7 @@ ${form.message}
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#f5efe6] overflow-hidden"
+      className="relative bg-[#f3ead9] mt-[-150px] overflow-hidden"
     >
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#f2e8cf]/95 via-[#f2e8cf]/90 to-[#f2e8cf]/95" />
@@ -128,8 +128,8 @@ ${form.message}
             <Image
               src="/aadi-handloom-logo.png"
               alt="AADI Handloom"
-              width={160}
-              height={90}
+              width={300}
+              height={210}
               className="opacity-95"
               priority
             />

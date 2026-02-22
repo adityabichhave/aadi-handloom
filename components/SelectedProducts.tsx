@@ -2,132 +2,67 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function SelectedPieces() {
   return (
-    <section className="relative bg-[#f2e8cf] py-14 md:py-24 overflow-hidden">
-
-      {/* soft luxury light */}
-      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#fff6dc]/40 blur-[160px] opacity-60 pointer-events-none"/>
+    <section className="bg-[#f3ead9] py-20 md:py-32">
 
       {/* ================= HEADER ================= */}
-      <div className="max-w-5xl mx-auto px-5 mb-12 md:mb-16 text-center">
+      <div className="max-w-4xl mx-auto px-6 text-center mb-[-9px] md:mt-[-80px]">
 
-        <h2 className="font-serif text-[26px] md:text-[44px] text-[#2a2118] leading-[1.25] mb-4">
-          Authentic Maheshwari Weaves from Maheshwar
-        </h2>
-
-        <div className="w-16 h-[1px] bg-[#c9b37a] mx-auto mb-4 opacity-60" />
-
-        <p className="text-[#5a5146] text-[14px] md:text-[15px] leading-[1.8] max-w-xl mx-auto">
-          Handwoven Maheshwari sarees, suits and dupattas crafted in Maheshwar.  
-          Timeless textiles trusted across India and worldwide.
+        <p className="tracking-[12px] text-[20px] text-[#b8965a] uppercase mb-[60px]">
+          Curated Collection
         </p>
+
+        <div className="w-16 h-[1px] bg-[#c9b37a] mx-auto opacity-60"/>
       </div>
 
-      {/* ================= PRODUCTS ================= */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+      {/* ================= GRID ================= */}
+      <div className="max-w-6xl mx-auto px-6">
 
-        {/* ===== MOBILE: 2 COL GRID ===== */}
-        <div className="grid grid-cols-1 gap-14 md:hidden">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
 
-          {/* item */}
-          <ProductCard
+          <CategoryCard
             link="/products"
-            main="/products/Sarees/Silk/heavy-pallu/classic-silk-WineRed-7.jpg"
-            hover="/products/Sarees/Silk/heavy-pallu/classic-silk-WineRed-6.jpg"
-            title="Silk Maheshwari"
+            image="/products/Sarees/Silk/heavy-pallu/classic-silk-WineRed-7.jpg"
+            title="Silk Sarees"
           />
 
-          <ProductCard
+          <CategoryCard
             link="/products?type=suit&page=1"
-            main="/products/Suits/Star buti/2-piece-star-buti-green-1.jpg"
-            hover="/products/Suits/Star buti/2-piece-star-buti-green-2.jpg"
-            title="Maheshwari Suits"
+            image="/products/Suits/Star buti/2-piece-star-buti-green-1.jpg"
+            title="Silk Suits"
           />
 
-          <ProductCard
+          <CategoryCard
             link="/products?type=dupatta&page=1"
-            main="/products/dupatta/Tie and Dye/tie-and-dye-dupatta-orangish-yellow-1.jpg"
-            hover="/products/dupatta/Tie and Dye/tie-and-dye-dupatta-orangish-yellow-2.jpg"
-            title="Maheshwari Dupatta"
+            image="/products/dupatta/Tie and Dye/tie-and-dye-dupatta-orangish-yellow-1.jpg"
+            title="Dupattas"
           />
 
-          <ProductCard
+          <CategoryCard
             link="/products?type=saree&category=printed&page=1"
-            main="/products/Sarees/printed/printed-ajrak-maheshwari-blue-1.jpg"
-            hover="/products/Sarees/printed/printed-ajrak-maheshwari-blue-6.jpg"
+            image="/products/Sarees/printed/printed-ajrak-maheshwari-blue-1.jpg"
             title="Printed Sarees"
           />
-        </div>
 
-        {/* ===== DESKTOP EDITORIAL ===== */}
-        <div className="hidden md:block">
-
-          {/* row 1 */}
-          <div className="flex items-start gap-20 mb-16">
-
-            <div className="w-[52%]">
-              <ProductCard
-                link="/products"
-                main="/products/Sarees/Silk/heavy-pallu/classic-silk-WineRed-7.jpg"
-                hover="/products/Sarees/Silk/heavy-pallu/classic-silk-WineRed-6.jpg"
-                title="Handwoven Silk Maheshwari"
-                big
-              />
-            </div>
-
-            <div className="w-[34%] mt-20">
-              <ProductCard
-                link="/products?type=suit&page=1"
-                main="/products/Suits/Star buti/2-piece-star-buti-green-1.jpg"
-                hover="/products/Suits/Star buti/2-piece-star-buti-green-2.jpg"
-                title="Maheshwari Silk Suits"
-              />
-            </div>
-          </div>
-
-          {/* row 2 */}
-          <div className="flex items-start gap-20">
-
-            <div className="w-[34%]">
-              <ProductCard
-                link="/products?type=dupatta&page=1"
-                main="/products/dupatta/Tie and Dye/tie-and-dye-dupatta-orangish-yellow-1.jpg"
-                hover="/products/dupatta/Tie and Dye/tie-and-dye-dupatta-orangish-yellow-2.jpg"
-                title="Maheshwari Dupattas"
-              />
-            </div>
-
-            <div className="w-[52%] mt-20">
-              <ProductCard
-                link="/products?type=saree&category=printed&page=1"
-                main="/products/Sarees/printed/printed-ajrak-maheshwari-blue-1.jpg"
-                hover="/products/Sarees/printed/printed-ajrak-maheshwari-blue-6.jpg"
-                title="Printed Maheshwari Sarees"
-                big
-              />
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* ================= BUTTON ================= */}
-      <div className="max-w-md mx-auto px-6 mt-12 md:mt-16">
+      {/* CTA */}
+      <div className="text-center mt-8 md:mt-12">
         <Link href="/products">
           <button className="
-          w-full md:w-auto
-          px-10 md:px-16 py-4
-          bg-[#d4b86f]
-          text-[#1f1a14]
-          text-[11px]
-          tracking-[0.35em]
-          uppercase
-          hover:bg-[#e6cf8e]
-          transition
-          md:hover:-translate-y-1
+            px-14 py-4
+            border border-[#c9b37a]
+            text-[#3a2d21]
+            tracking-[0.35em]
+            uppercase text-[12px]
+            hover:bg-[#efe4d6]
+            transition-all duration-300
           ">
-            Explore Full Collection
+            View Entire Collection
           </button>
         </Link>
       </div>
@@ -136,31 +71,45 @@ export default function SelectedPieces() {
   );
 }
 
-/* ================= CARD ================= */
 
-function ProductCard({ link, main, hover, title, big=false }: any) {
+/* ================= CATEGORY CARD ================= */
+
+function CategoryCard({ link, image, title }: any) {
   return (
-    <Link href={link} className="group block">
-      <div className="relative aspect-[3/4] overflow-hidden bg-[#fbf9f4]">
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+    >
+      <Link href={link} className="group block text-center">
 
-        <Image
-          src={main}
-          alt={title}
-          fill
-          className="object-cover transition-all duration-[1400ms] group-hover:scale-105"
-        />
+        {/* Image Frame */}
+        <div className="relative aspect-[3/4] overflow-hidden rounded-sm bg-[#fbf9f4]">
 
-        <Image
-          src={hover}
-          alt="detail"
-          fill
-          className="object-cover opacity-0 scale-110 transition-all duration-[1600ms] group-hover:opacity-100 group-hover:scale-100"
-        />
-      </div>
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover transition duration-700 group-hover:scale-[1.04]"
+          />
 
-      <h3 className={`font-serif mt-3 text-[#2a2118] ${big ? "text-2xl" : "text-lg"}`}>
-        {title}
-      </h3>
-    </Link>
+        </div>
+
+        {/* Title */}
+        <h3 className="
+          mt-5
+          font-serif
+          text-[18px] md:text-[20px]
+          text-[#4a3a2c]
+          tracking-[1px]
+          group-hover:text-[#b8965a]
+          transition-colors duration-300
+        ">
+          {title}
+        </h3>
+
+      </Link>
+    </motion.div>
   );
 }

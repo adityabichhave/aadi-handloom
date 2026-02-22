@@ -22,7 +22,7 @@ export default function BackFilterBar({
   return (
     <div
       className="
-        fixed top-[56px] left-0 w-full z-40
+        fixed top-[0px] left-0 w-full z-40
         bg-[#e9d8af]
         border-b border-[#bfa25a]/40
       "

@@ -44,7 +44,7 @@ const collections = [
 
 export default function ProductCategories() {
   return (
-    <section className="relative bg-[#f2e8cf] py-28 overflow-hidden">
+    <section className="relative bg-[#f3ead9] py-28 overflow-hidden">
 
     
 

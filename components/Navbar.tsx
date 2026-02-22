@@ -1,225 +1,226 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { useCart } from "./CartContext";
+import { ShoppingBag, Search, Menu, X,ChevronLeft, ChevronRight    } from "lucide-react";
+import { FaInstagram, FaFacebookF, FaYoutube, FaWhatsapp } from "react-icons/fa";
+import { useState, useEffect } from "react";
+import NavbarSearch from "@/components/NavbarSearch";
 
-export default function Navbar() {
-  const { cart, openCart } = useCart();
-  const pathname = usePathname();
-
+export default function LuxuryNavbar() {
   const [open, setOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
-
-  const mainNav = [
-    { name: "Home", href: "/" },
-    {
-      name: "Shop",
-      dropdown: [
-        { name: "Maheshwari Sarees", href: "/products?type=saree" },
-        { name: "Maheshwari Suits", href: "/products?type=suit" },
-        { name: "Dupattas", href: "/products?type=dupatta" },
-        { name: "View All Products", href: "/products" },
-      ],
-    },
-    { name: "Heritage", href: "/heritage" },
-    { name: "About Us", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "Contact", href: "/contact" },
+  const [mobileCat, setMobileCat] = useState(false);
+    const messages = [
+    "Welcome to AADI Handloom",
+    "Pure Maheshwari Silk & Cotton Sarees from Maheshwar",
+    "New Luxury Collection Now Available",
+    "Free Shipping Across India",
+    "Wholesale & Bulk Orders Available",
+    "Premium Handwoven Sarees & Suits"
   ];
 
+    const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(true);
+
+  const next = () => {
+    setFade(false);
+    setTimeout(() => {
+      setIndex((prev) => (prev + 1) % messages.length);
+      setFade(true);
+    }, 200);
+  };
+  const nextMsg = () => {
+  setIndex((prev) => (prev + 1) % messages.length);
+};
+
+const prevMsg = () => {
+  setIndex((prev) => (prev - 1 + messages.length) % messages.length);
+};
+
+  const prev = () => {
+    setFade(false);
+    setTimeout(() => {
+      setIndex((prev) =>
+        prev === 0 ? messages.length - 1 : prev - 1
+      );
+      setFade(true);
+    }, 200);
+  };
+    useEffect(() => {
+    const interval = setInterval(() => {
+      nextMsg();
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+
   return (
-    <>
-      {/* ================= NAVBAR ================= */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-[#1a1209] border-b border-[#c2a45d]/30 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
 
-          {/* LOGO */}
-          <Link href="/" className="flex items-center gap-3">
-            <img src="/aadi-handloom-logo.png" className="w-14" alt="Aadi Handloom" />
-            <div className="flex flex-col leading-none">
+    
+    <header className="w-full bg-[#f3ead9] text-[#3a2d1f] py-7 relative z-50">
 
-  {/* AADI = main brand */}
-  <span 
-    className="text-[#d6b874] text-[28px] tracking-[0.35em]"
-    style={{ fontFamily: "Cinzel, serif" }}
+
+<div className="relative flex items-center justify-center h-[36px] md:h-[40px] border-b-2 border-[#e8dcc6] mb-2">
+
+  {/* LEFT ARROW */}
+  <button
+    onClick={prev}
+    className="absolute left-[42px] md:left-[420px] top-[5px] -translate-y-1/2
+               opacity-70 hover:opacity-100 transition"
   >
-    AADI
-  </span>
+    <ChevronLeft size={16} />
+  </button>
 
-  {/* HANDLOOM = royal signature */}
-  <span 
-    className="text-[#e8dcc4] text-[20px] -mt-0.8"
-    style={{ fontFamily: "Great Vibes, cursive" }}
+  {/* MESSAGE */}
+  <p
+    className={`text-center text-[13px] md:text-[14px] mt-[-25px] tracking-wide transition-opacity duration-500 ${
+      fade ? "opacity-100" : "opacity-0"
+    }`}
   >
-    Handloom
-  </span>
+    {messages[index]}
+  </p>
+
+  {/* RIGHT ARROW */}
+  <button
+    onClick={next}
+    className="absolute right-[42px] md:right-[420px] top-[5px] -translate-y-1/2
+               opacity-70 hover:opacity-100 transition"
+  >
+    <ChevronRight size={16} />
+  </button>
 
 </div>
-          </Link>
+        <div className="hidden md:flex absolute left-[300px] top-[42px] -translate-x-1/2 -translate-y-1/2 gap-5 text-[22px]">
 
-          {/* ================= DESKTOP MENU ================= */}
-          <div className="hidden md:flex items-center gap-10">
-
-            {mainNav.map((item) => {
-
-              /* ===== SHOP DROPDOWN ===== */
-              if (item.dropdown) {
-                return (
-                  <div key={item.name} className="relative group">
-
-                    {/* SHOP TEXT */}
-                    <span className="flex items-center gap-1 cursor-pointer text-[13px] tracking-[0.25em] uppercase text-[#e8dcc4]/80 hover:text-[#f0d48f] transition">
-
-                      {item.name}
-
-                      {/* ARROW */}
-                      <svg
-                        className="w-3 h-3 ml-1 transition-transform duration-300 group-hover:rotate-180"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-                      </svg>
-                    </span>
-
-                    {/* invisible hover bridge */}
-                    <div className="absolute top-full left-0 h-4 w-full"/>
-
-                    {/* DROPDOWN */}
-                    <div className="
-                      absolute left-0 top-full mt-2
-                      w-64
-                      bg-[#1e140b]
-                      border border-[#c2a45d]/30
-                      shadow-[0_20px_60px_rgba(0,0,0,0.55)]
-                      py-4
-                      opacity-0 invisible translate-y-3
-                      transition-all duration-300
-                      group-hover:opacity-100
-                      group-hover:visible
-                      group-hover:translate-y-0
-                      z-50
-                    ">
-                      {item.dropdown.map((sub) => (
-                        <Link
-                          key={sub.name}
-                          href={sub.href}
-                          className="block px-6 py-3 text-[15px] text-[#e8dcc4]/85 hover:text-[#f0d48f] hover:bg-[#2a1d10] transition"
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                );
-              }
-
-              const active = pathname === item.href;
-
-              return (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`text-[13px] tracking-[0.25em] uppercase transition ${
-                    active
-                      ? "text-[#f0d48f]"
-                      : "text-[#e8dcc4]/80 hover:text-[#f0d48f]"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* ================= RIGHT SIDE ================= */}
-          <div className="flex items-center gap-3">
-
-            {/* CART */}
-            <button
-              onClick={openCart}
-              className="relative border border-[#c2a45d]/50 w-9 h-9 flex items-center justify-center text-[#d6b874] hover:bg-[#2a1d10] transition"
-            >
-              🛒
-              {cart.length > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#d6b874] text-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
-                  {cart.length}
-                </span>
-              )}
-            </button>
-
-            {/* MOBILE MENU BTN */}
-            <button onClick={() => setOpen(!open)} className="md:hidden flex flex-col gap-1">
-              <span className="w-6 h-[2px] bg-[#e8dcc4]" />
-              <span className="w-5 h-[2px] bg-[#e8dcc4]" />
-              <span className="w-6 h-[2px] bg-[#e8dcc4]" />
-            </button>
-          </div>
+          <a href="https://instagram.com/aadihandloom" target="_blank">
+          <FaInstagram />
+        </a>
+        <a href="https://www.facebook.com/Shailendra.bichhave81" target="_blank">
+          <FaFacebookF />
+        </a>
+        <a href="https://www.youtube.com/@aadihandloom" target="_blank">
+          <FaYoutube />
+        </a>
+        <a href="https://wa.me/918770039639">
+          <FaWhatsapp />
+        </a>
+        
         </div>
-      </nav>
 
-      {/* ================= MOBILE DRAWER ================= */}
-      <div className={`fixed inset-0 z-40 ${open ? "block" : "hidden"}`}>
-        <div className="absolute inset-0 bg-black/60" onClick={() => setOpen(false)} />
 
-        <div className="absolute right-0 top-0 h-full w-[78%] bg-[#1e140b] p-8 pt-20 space-y-7 shadow-2xl">
+      {/* ===== LOGO ROW (TIGHT FITTED) ===== */}
+      <div className="relative flex items-center justify-center py-[2px]">
 
-          {mainNav.map((item) => (
-            <div key={item.name}>
+        {/* LEFT */}
+        <div className="absolute left-4 md:left-[300px] flex items-center gap-7">
+          <button className="md:hidden" onClick={() => setOpen(true)}>
+            <Menu size={21} />
+          </button>
+          <NavbarSearch />
+        </div>
 
-              {/* SHOP MOBILE DROPDOWN */}
-              {item.dropdown ? (
-                <>
-                  <button
-                    onClick={() => setShopOpen(!shopOpen)}
-                    className="flex items-center justify-between w-full text-[#d6b874] uppercase tracking-[0.35em]"
-                  >
-                    {item.name}
+        {/* LOGO */}
+        <Link href="/" className="flex justify-center items-center -mb-9 md:-mb-8 -mt-2 md:-mt-5">
+  <Image
+    src="/aadi-handloom-logo.png"
+    alt="AADI Handloom"
+    width={180}
+    height={80}
+    className="h-[200px] w-auto object-contain"
+  />
+</Link>
 
-                    <svg
-                      className={`w-4 h-4 transition ${shopOpen ? "rotate-180" : ""}`}
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                  </button>
-
-                  {shopOpen && (
-                    <div className="pl-3 mt-4 space-y-3">
-                      {item.dropdown.map((sub) => (
-                        <Link
-                          key={sub.name}
-                          href={sub.href}
-                          onClick={() => setOpen(false)}
-                          className="block text-[#e8dcc4]/85"
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block text-[#e8dcc4] uppercase tracking-[0.35em]"
-                >
-                  {item.name}
-                </Link>
-              )}
-            </div>
-          ))}
-
+        {/* RIGHT */}
+        <div className="absolute right-6 md:right-[300px] flex gap-5 items-center">
+          <Link href="/cart">
+            <ShoppingBag size={20} className="cursor-pointer"/>
+          </Link>
         </div>
       </div>
-    </>
+
+      {/* ===== DESKTOP MENU (VERY CLOSE TO LOGO) ===== */}
+      <nav className="hidden md:flex justify-center gap-8 pt-[4px] pb-[6px] text-[12.5px] tracking-[0.28em] uppercase border-b border-[#e8dcc6]">
+
+        <Link href="/" className="relative group">
+          Home
+          <span className="absolute left-1/2 -bottom-2 h-[1px] w-0 bg-[#3a2d1f] transition-all duration-500 group-hover:w-full group-hover:left-0"></span>
+        </Link>
+
+        {/* Categories */}
+        <div className="relative group cursor-pointer">
+          <span className="flex items-center gap-1 relative">
+            Categories
+            <span className="text-[10px]">▾</span>
+            <span className="absolute left-1/2 -bottom-2 h-[1px] w-0 bg-[#3a2d1f] transition-all duration-500 group-hover:w-full group-hover:left-0"></span>
+          </span>
+
+          <div className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-[240px]
+          bg-[#f6efe6] shadow-xl border border-[#e6dccb]
+          opacity-0 translate-y-6 invisible
+          group-hover:opacity-100 group-hover:translate-y-0 group-hover:visible
+          transition-all duration-500">
+
+            <div className="flex flex-col text-[12px] tracking-widest uppercase py-3">
+              <Link href="/products?type=saree" className="px-7 py-3 hover:bg-[#efe4d1]">Sarees</Link>
+              <Link href="/products?type=suit" className="px-7 py-3 hover:bg-[#efe4d1]">Suits</Link>
+              <Link href="/products?type=dupatta" className="px-7 py-3 hover:bg-[#efe4d1]">Dupattas</Link>
+
+            </div>
+          </div>
+        </div>
+
+        {[
+          { name: "Collection", href: "/products" },
+          { name: "Blogs", href: "/blog" },
+          { name: "Heritage", href: "/heritage" },
+          { name: "Contact", href: "/contact" },
+        ].map((item) => (
+          <Link key={item.name} href={item.href} className="relative group">
+            {item.name}
+            <span className="absolute left-1/2 -bottom-2 h-[1px] w-0 bg-[#3a2d1f] transition-all duration-500 group-hover:w-full group-hover:left-0"></span>
+          </Link>
+        ))}
+      </nav>
+
+      {/* ===== MOBILE MENU ===== */}
+      <div className={`fixed top-0 left-0 h-full w-[280px] bg-[#f3ead9] shadow-2xl transition-transform duration-500 z-[60] ${open ? "translate-x-0" : "-translate-x-full"}`}>
+
+        <div className="flex justify-between items-center p-5 border-b">
+          <span className="font-semibold">Menu</span>
+          <X onClick={() => setOpen(false)} className="cursor-pointer"/>
+        </div>
+
+        <div className="flex flex-col p-6 gap-6 uppercase tracking-wider text-[14px]">
+          <Link href="/" onClick={()=>setOpen(false)}>Home</Link>
+
+          <div className="flex flex-col">
+            <button
+              onClick={() => setMobileCat(!mobileCat)}
+              className="flex justify-between items-center"
+            >
+              Categories
+              <span className={`transition ${mobileCat ? "rotate-180" : ""}`}>▾</span>
+            </button>
+
+            {mobileCat && (
+              <div className="flex flex-col mt-4 ml-3 gap-4 text-[13px] normal-case tracking-normal">
+                <Link href="/products?type=saree" onClick={()=>setOpen(false)}>Sarees</Link>
+                <Link href="/products?type=suit" onClick={()=>setOpen(false)}>Suits</Link>
+                <Link href="/products?type=dupatta" onClick={()=>setOpen(false)}>Dupattas</Link>
+              </div>
+            )}
+          </div>
+
+          <Link href="/products" onClick={()=>setOpen(false)}>Collection</Link>
+          <Link href="/blog" onClick={()=>setOpen(false)}>Blogs</Link>
+          <Link href="/heritage" onClick={()=>setOpen(false)}>Heritage</Link>
+          <Link href="/contact" onClick={()=>setOpen(false)}>Contact</Link>
+        </div>
+      </div>
+
+      {open && (
+        <div className="fixed inset-0 bg-black/40 z-40" onClick={()=>setOpen(false)} />
+      )}
+    </header>
   );
 }

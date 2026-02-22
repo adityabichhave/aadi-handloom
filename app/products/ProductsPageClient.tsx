@@ -135,11 +135,7 @@ export default function ProductsPageClient() {
         onFilterClick={() => setShowFilter(true)}
       />
 
-      <main className="relative min-h-screen bg-[#f3ead7] overflow-hidden">
-        {/* cinematic luxury light */}
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#fff6dc]/40 blur-[160px] opacity-60 pointer-events-none" />
-        <div className="absolute bottom-[-200px] right-[-200px] w-[700px] h-[700px] bg-[#3a2d1c]/20 blur-[140px] pointer-events-none" />
-
+      <main className="relative min-h-screen pt-12 mt-[-250px] bg-[#f3ead7] overflow-hidden">
         {/* heritage texture */}
         <div
           className="absolute inset-0 opacity-[0.05] pointer-events-none"

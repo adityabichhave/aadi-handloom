@@ -17,7 +17,7 @@ export default function HeritagePage() {
   }, []);
 
   return (
-    <main className="bg-[#1e140c] overflow-hidden">
+    <main className="bg-[#1e140c] -mt-[60px] overflow-hidden">
       {/* ================= INTRO / HERO ================= */}
       <section
         ref={ref}

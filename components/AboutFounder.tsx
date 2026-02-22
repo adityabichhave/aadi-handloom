@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function AboutHeritage() {
   return (
-    <section className="relative bg-[#f2e8cf] py-20 md:py-28 overflow-hidden">
+    <section className="relative bg-[#f3ead9] py-20 md:py-28 overflow-hidden">
       {/* Textile texture */}
       <div
         className="absolute inset-0 opacity-[0.06]"
@@ -121,12 +121,12 @@ export default function AboutHeritage() {
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-8 sm:gap-12">
               <Image
-                src="/aadi-handloom-logo.png"
-                alt="Aadi Handloom Logo"
-                width={120}
-                height={60}
-                className="shrink-0"
-              />
+  src="/aadi-handloom-logo.png"
+  alt="Aadi Handloom Logo"
+  width={220}
+  height={120}
+  className="w-[140px] sm:w-[180px] md:w-[220px] h-auto"
+/>
 
               <Link
                 href="/about"

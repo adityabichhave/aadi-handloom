@@ -1,6 +1,5 @@
 import Hero from "../components/Hero";
 
-import ScrollIndicator from "../components/ScrollIndicator";
 import Craft from "../components/Craft";
 import CraftToProducts from "../components/CraftToProducts";
 import ProductCategories from "../components/ProductCategories";
@@ -16,13 +15,12 @@ export default function HomePage() {
     <>
       {/* SEO H1 — invisible but critical */}
       <h1 className="sr-only">
-        Authentic Maheshwari Handloom Sarees from Maheshwar – AADI Handloom
+        Pure Maheshwari Handloom Sarees from Maheshwar – AADI Handloom
       </h1>
 
       <Hero />
-      <ScrollIndicator />
-      <HandloomMark />
       <SelectedPieces />
+      <HandloomMark />
       <Craft />
       <CraftToProducts />
       <FeaturedWeaves />
