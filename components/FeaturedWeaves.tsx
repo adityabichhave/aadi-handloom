@@ -8,7 +8,7 @@ const featuredWeaves = [
   {
     title: "Royal Zari Weave",
     subtitle: "Handwoven with real zari threads",
-    image: "/featured/zari-weave.jpg",
+    image: "/Maheshwari-Zari-Saree.jpg",
   },
   {
     title: "Classic Silk Weave",

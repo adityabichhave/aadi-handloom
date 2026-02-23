@@ -1,7 +1,4 @@
 import Hero from "../components/Hero";
-
-import Craft from "../components/Craft";
-import CraftToProducts from "../components/CraftToProducts";
 import ProductCategories from "../components/ProductCategories";
 import FeaturedWeaves from "../components/FeaturedWeaves";
 import AboutFounder from "../components/AboutFounder";
@@ -21,8 +18,6 @@ export default function HomePage() {
       <Hero />
       <SelectedPieces />
       <HandloomMark />
-      <Craft />
-      <CraftToProducts />
       <FeaturedWeaves />
       <ProductCategories />
       <AboutFounder />

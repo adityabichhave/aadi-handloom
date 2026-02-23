@@ -113,14 +113,14 @@ export default function LuxuryHero() {
                 </motion.a>
               </div>
 
-              <div className="mt-12 text-[11px] tracking-[3px] text-[#a07c4a] uppercase">
+              <div className="mt-[17px] text-[11px] tracking-[3px] text-[#a07c4a] uppercase">
                 Worn across India • Loved worldwide
               </div>
 
             </motion.div>
 
             {/* IMAGE SIDE */}
-            <div className="relative flex justify-center lg:justify-end items-end gap-5 md:gap-10 mt-10 lg:mt-0">
+            <div className="relative flex justify-center lg:justify-end items-end gap-5 md:gap-10 mt-[-40px] lg:mt-0">
 
               <div className="absolute right-[10%] top-[10%] w-[260px] h-[260px] md:w-[420px] md:h-[420px] bg-[#e8dccb] rounded-full blur-3xl opacity-60" />
 

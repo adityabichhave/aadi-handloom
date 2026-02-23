@@ -172,6 +172,7 @@ const prevMsg = () => {
         {[
           { name: "Collection", href: "/products" },
           { name: "Blogs", href: "/blog" },
+          { name: "Craft", href: "/craft" },
           { name: "Heritage", href: "/heritage" },
           { name: "Contact", href: "/contact" },
         ].map((item) => (
@@ -190,7 +191,7 @@ const prevMsg = () => {
           <X onClick={() => setOpen(false)} className="cursor-pointer"/>
         </div>
 
-        <div className="flex flex-col p-6 gap-6 uppercase tracking-wider text-[14px]">
+        <div className="flex flex-col p-6 gap-9 uppercase tracking-wider text-[14px]">
           <Link href="/" onClick={()=>setOpen(false)}>Home</Link>
 
           <div className="flex flex-col">
@@ -213,6 +214,7 @@ const prevMsg = () => {
 
           <Link href="/products" onClick={()=>setOpen(false)}>Collection</Link>
           <Link href="/blog" onClick={()=>setOpen(false)}>Blogs</Link>
+          <Link href="/craft" onClick={()=>setOpen(false)}>Craft</Link>
           <Link href="/heritage" onClick={()=>setOpen(false)}>Heritage</Link>
           <Link href="/contact" onClick={()=>setOpen(false)}>Contact</Link>
         </div>
