@@ -87,7 +87,6 @@ export default function ProductClient({ product }: { product: Product }) {
 
         <section className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
 
-          {/* IMAGE */}
           <div>
             <div
   className="relative aspect-[3/4] bg-[#e9e2d6] overflow-hidden cursor-zoom-in group"
@@ -96,43 +95,29 @@ export default function ProductClient({ product }: { product: Product }) {
   onMouseLeave={() => setShowLens(false)}
   onClick={() => setZoomOpen(true)}
 >
-              <Image
-                src={images[imageIndex]}
-                alt={product.name}
-                fill
-                priority
-                className="object-cover"
-              />
+             <div className="relative w-full aspect-[4/5]">
 
-              {/* magnifying glass */}
-              {/* ===== PREMIUM GLASS ZOOM ===== */}
-{showLens && (
-  <>
-    {/* smooth zoom layer */}
-    <div
-      className="hidden md:block absolute inset-0 pointer-events-none"
-      style={{
-        backgroundImage: `url(${images[imageIndex]})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "800%",
-        backgroundPosition: `${lensPos.x}% ${lensPos.y}%`,
-      }}
-    />
+  <Image
+    src={images[imageIndex]}
+    alt={product.name}
+    fill
+    priority
+    className="object-cover"
+  />
 
-    {/* luxury circular lens */}
-    <div
-      className="hidden md:block absolute w-[140px] h-[140px] rounded-full border border-[#c6a95a]/60 backdrop-blur-sm pointer-events-none"
-      style={{
-        top: `calc(${lensPos.y}% - 60px)`,
-        left: `calc(${lensPos.x}% - 60px)`,
-        backgroundImage: `url(${images[imageIndex]})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "400%",
-        backgroundPosition: `${lensPos.x}% ${lensPos.y}%`,
-      }}
+  {/* Logo Overlay */}
+  <div className="relative md:top-6 md:left-1 opacity-100">
+    <Image
+      src="/aadi-handloom-logo.png"
+      alt="Aadi Handloom"
+      width={120}
+      height={60}
+      className="object-contain"
     />
-  </>
-)}
+  </div>
+
+</div>
+              
             </div>
 
             {/* thumbnails */}

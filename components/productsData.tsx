@@ -406,6 +406,105 @@ export const products = [
     ],
   },
 
+  // Coin Buti Maheshwari Saree - Onion Pink, Pink
+  {
+    type: "saree",
+    slug: "coin-buti-maheshwari-saree-OnionPink",
+    name: "Coin Buti Maheshwari Saree | Onion Pink",
+    price: "₹4,499",
+    fabric: "Cotton Silk",
+    category: "Coin Buti",
+    description: "Unique coin buti Maheshwari saree with a blend of traditional and contemporary design.",
+    details: {
+      weave: "Handwoven Maheshwari",
+      length: "6.2 meters",
+      blouse: "Attached",
+      care: "Dry Clean Only",
+      origin: "Maheshwar, India",
+    },
+    colors: [
+      {
+        name: "Onion Pink",
+        hex: "#e093c5ff",
+        images: [
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-1.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-2.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-3.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-4.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-5.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-6.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-7.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-8.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-onion-pink-9.jpg",
+        ],
+      },
+      {
+        name: "Pink",
+        hex: "#add1e6ff",
+        images: [
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-1.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-2.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-3.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-4.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-5.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-6.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-7.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-8.jpg",
+        ],
+      }
+    ],
+  },
+
+  {
+    type: "saree",
+    slug: "coin-buti-maheshwari-saree-Pink",
+    name: "Coin Buti Maheshwari Saree | Pink",
+    price: "₹4,499",
+    fabric: "Cotton Silk",
+    category: "Coin Buti",
+    description: "Unique coin buti Maheshwari saree with a blend of traditional and contemporary design.",
+    details: {
+      weave: "Handwoven Maheshwari",
+      length: "6.2 meters",
+      blouse: "Attached",
+      care: "Dry Clean Only",
+      origin: "Maheshwar, India",
+    },
+    colors: [
+      {
+        name: "Pink",
+        hex: "#e597daff",
+        images: [
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-1.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-2.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-3.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-4.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-5.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-6.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-7.jpg",
+          "/products/Sarees/Coin-Buti/coin-buti-maheshwari-pink-8.jpg",
+        ],
+      },
+      {
+        name: "Onion Pink",
+        hex: "#e2a1a1ff",
+        images: [
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-1.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-2.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-3.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-4.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-5.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-6.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-7.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-8.jpg",
+          "/products/Sarees/coin-buti-maheshwari-onion-pink-9.jpg",
+        ],
+      }
+      
+    ],
+  },
+
+
   // Plain Maheshwari Saree - Beige
   {
     type: "saree",
@@ -471,6 +570,172 @@ export const products = [
       },
     ],
   },
+
+  // Tie and Dye Maheshwari Saree - beige, white, Gajri
+
+  {
+    type: "saree",
+    slug: "tie-dye-maheshwari-saree-beige",
+    name: "Tie and Dye Maheshwari Saree | Beige",
+    price: "₹3,499",
+    fabric: "Cotton Silk",
+    category: "Tie and Dye",
+    description: "Unique tie and dye Maheshwari saree blending traditional craftsmanship with modern aesthetics.",
+    details: {
+      weave: "Handwoven Maheshwari",
+      length: "6.2 meters",
+      blouse: "Attached",
+      care: "Dry Clean Only",
+      origin: "Maheshwar, India",
+    },
+    colors: [
+      {
+        name: "Beige",
+        hex: "#ebb773ff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-4.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-5.jpg",
+        ],
+      },
+      {
+        name: "Gajri",
+        hex: "#d881b8ff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-4.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-5.jpg",
+        ],
+      },
+      {
+        name: "White",
+        hex: "#ffffff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-4.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-5.jpg",
+        ],
+      },
+    ],
+  },
+
+  {
+    type: "saree",
+    slug: "tie-dye-maheshwari-saree-gajri",
+    name: "Tie and Dye Maheshwari Saree | Gajri",
+    price: "₹3,499",
+    fabric: "Cotton Silk",
+    category: "Tie and Dye",
+    description: "Unique tie and dye Maheshwari saree blending traditional craftsmanship with modern aesthetics.",
+    details: {
+      weave: "Handwoven Maheshwari",
+      length: "6.2 meters",
+      blouse: "Attached",
+      care: "Dry Clean Only",
+      origin: "Maheshwar, India",
+    },
+    colors: [
+      {
+        name: "Gajri",
+        hex: "#d881b8ff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-4.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-5.jpg",
+        ],
+      },
+      {
+        name: "Beige",
+        hex: "#e6c294d5",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-4.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-5.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-6.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-7.jpg",
+        ],
+      },
+      {
+        name: "White",
+        hex: "#ffffff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-4.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-5.jpg",
+        ],
+      },
+    ],
+  },  
+
+  {
+    type: "saree",
+    slug: "tie-dye-maheshwari-saree-white",
+    name: "Tie and Dye Maheshwari Saree | White",
+    price: "₹3,499",
+    fabric: "Cotton Silk",
+    category: "Tie and Dye",
+    description: "Unique tie and dye Maheshwari saree blending traditional craftsmanship with modern aesthetics.",
+    details: {
+      weave: "Handwoven Maheshwari",
+      length: "6.2 meters",
+      blouse: "Attached",
+      care: "Dry Clean Only",
+      origin: "Maheshwar, India",
+    },
+    colors: [
+      {
+        name: "White",
+        hex: "#ffffff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-4.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-white-5.jpg",
+        ],
+      },
+      {
+        name: "Gajri",
+        hex: "#d881b8ff",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-1.jpg",
+          "/products/Sarees/Tie-and-Dye /tie-dye-gajri-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-4.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-5.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-6.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-gajri-7.jpg",
+        ],
+      },
+      {
+        name: "Beige",
+        hex: "#e6c294d5",
+        images: [
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-1.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-2.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-3.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-4.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-5.jpg", 
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-6.jpg",
+          "/products/Sarees/Tie-and-Dye/tie-dye-beige-7.jpg",
+        ],
+      },
+    ],  
+
+  },
+
   /* ===================== SUITS ===================== */
 
 

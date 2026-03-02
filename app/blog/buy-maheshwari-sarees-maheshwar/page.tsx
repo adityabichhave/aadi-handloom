@@ -29,10 +29,25 @@ export default function Page() {
         </p>
 
         <div className="mt-10 text-center">
-          <a href="/products" className="bg-[#bfa25a] px-10 py-4 uppercase tracking-[0.3em]">
-            Shop Maheshwari Sarees
-          </a>
-        </div>
+  <a
+    href="/products"
+    className="
+      inline-block
+      w-full sm:w-auto
+      bg-[#bfa25a]
+      px-8 sm:px-12
+      py-4
+      text-[16px] sm:text-[18px]
+      uppercase
+      tracking-[0.3em]
+      text-black
+      transition-all duration-300
+      hover:bg-[#a88c45]
+    "
+  >
+    Shop Maheshwari Sarees
+  </a>
+</div>
 
       </div>
     </main>

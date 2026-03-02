@@ -12,10 +12,12 @@ const collections = [
     viewAllLabel: "View All Sarees",
     items: [
       { name: "Plain Maheshwari", slug: "Plain", image: "/categories/Plain-Maheshwari.jpg" },
-      { name: "Silk Sarees", slug: "silk", image: "/categories/AADI-HANDLOOM-silk.jpg" },
-      { name: "Printed Sarees", slug: "printed", image: "/categories/AADI-HANDLOOM-printed.jpg" },
-      { name: "Buti Sarees", slug: "buti", image: "/categories/buti-Maheshwari.jpg" },
-      { name: "Checks Sarees", slug: "checks", image: "/categories/checks-Maheshwari.jpg" },
+      { name: "Silk ", slug: "silk", image: "/categories/AADI-HANDLOOM-silk.jpg" },
+      { name: "Printed", slug: "printed", image: "/categories/AADI-HANDLOOM-printed.jpg" },
+      { name: "Buti", slug: "buti", image: "/categories/buti-Maheshwari.jpg" },
+      { name: "Checks", slug: "checks", image: "/categories/checks-Maheshwari.jpg" },
+      { name: "Coin Buti", slug: "Coin Buti", image: "/categories/coin-buti.jpg" },
+      { name: "Tie & Dye", slug: "Tie and Dye", image: "/categories/tie-and-dye-Maheshwari.jpg" },
     ],
   },
   {
